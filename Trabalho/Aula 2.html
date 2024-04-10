@@ -1,0 +1,186 @@
+
+
+<html>
+    <H1>Cadastre Seu Produto</H1>
+    <script>
+        // Mandar alerta quando tiver alguma informacao faltando
+        
+        function cancelarCadastro(){
+            alert("Todas Informações do seu produto foram apagadas! ");
+        }class produto{
+            constructor(nome,marca,quantidade,categoria,condicao){
+                this.nome = nome;
+                this.marca = marca;
+                this.quantidade = quantidade;
+                this.categoria = categoria;
+                this.condicao = condicao;
+            }
+        }
+        function cadastrarItem(){
+            produtos=[];
+            nome = document.getElementById("nome").value;
+            marca = document.getElementById("marca").value;
+            quantidade = document.getElementById("quantidade").value;
+            categoria = document.getElementById("Categoria").value;
+            condicao = document.querySelector('input[name="Condição"]:checked').value;
+            checkedValue = document.querySelector('.D:checked').value;
+            
+            if(nome !== "" && marca !== "" && quantidade !== "" && categoria !== "" && condicao !== null && checkedValue !== null){
+                Item = new produto(nome,marca,quantidade,categoria,condicao);
+                produtos.push(Item);
+            }else{
+                console.log("preencha as informacoes");
+            }
+            
+        }function table(){
+            var table = document.getElementById("Tabela de Produtos");
+            for (var i = 0; i < produtos.length;i++){
+                var row = table.insertRow(i+1);
+                var celulaNome = row.insertCell(0);
+                var celulaMarca = row.insertCell(1);
+                var celulaQtde = row.insertCell(2);
+                var celulaCategoria = row.insertCell(3);
+                var celulaCondicao = row.insertCell(4);
+                var celulaBotoes = row.insertCell(5);
+
+                
+                celulaNome.innerHTML = produtos[i].nome;
+                celulaMarca.innerHTML = produtos[i].marca;
+                celulaQtde.innerHTML = produtos[i].quantidade;
+                celulaCategoria.innerHTML = produtos[i].categoria;
+                celulaCondicao.innerHTML = produtos[i].condicao;
+                celulaBotoes.innerHTML = '<input type="button" value="Delete" onclick="deleteRow(this)">  <input type="button" value="Editar Item" onclick="editRow(this)">  <input type="button" value="Testar Item" onclick="ligar();desligar();ligarBluetooth(this);ligarMonitor(this);funcionar(this)">';
+            }
+        }function deleteRow(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("Tabela de Produtos").deleteRow(i);
+        }function editRow(r) {
+            var j = r.parentNode.parentNode;
+            var checagemCategoria = true;
+            var checagemCondicao = true;
+            var checagemQtde = true;
+
+            var celulaNome =  j.cells[0];
+            var celulaMarca = j.cells[1];
+            var celulaQtde = j.cells[2];
+            var celulaCategoria = j.cells[3];
+            var celulaCondicao = j.cells[4];
+
+            let nomeInput = prompt("Digita o nome atualizado: ",celulaNome.innerHTML);
+            let marcaInput = prompt("Digite a marca atualizada: ",celulaMarca.innerHTML);
+            while(checagemQtde){
+                qtdeInput = prompt("Digite a quantidade atualizada dentre as opções (1,2,3,4,5,5+)",celulaQtde.innerHTML);
+                if(qtdeInput == "1" || qtdeInput =="2" || qtdeInput == "3" || qtdeInput == "4" || qtdeInput == "5" || qtdeInput =="5+"){
+                    checagemQtde = false;
+                }
+            }
+
+            while(checagemCategoria){
+                categoriaInput = prompt("Digite a categoria atualizada dentre as opções (Celular,Computador e Eletrodomestico)",celulaCategoria.innerHTML);
+                if(categoriaInput == "Celular" || categoriaInput == "Computador" || categoriaInput == "Eletrodomestico"){
+                    checagemCategoria = false;
+                }
+            }
+            while(checagemCondicao){
+                condicaoInput = prompt("Digita a condicao atualizada dentre as opções (Novo ou Usado) ",celulaCondicao.innerHTML);
+                if(condicaoInput == "Novo" || condicaoInput == "Usado"){
+                    checagemCondicao = false;
+                }
+            }
+            celulaNome.innerHTML = nomeInput;
+            celulaMarca.innerHTML = marcaInput;
+            celulaQtde.innerHTML = qtdeInput;
+            celulaCategoria.innerHTML = categoriaInput;
+            celulaCondicao.innerHTML = condicaoInput;
+            
+        }function ligar(){
+            alert("Ligando...");
+        }function desligar(){
+            alert("Desligando...");
+        }function ligarBluetooth(r){
+            var x = r.parentNode.parentNode;
+            celulaCategoria = x.cells[3];
+
+            if(celulaCategoria == "Celular"){
+                alert("Ligando bluetooth...");
+            }
+        }function ligarMonitor(r){
+            var x = r.parentNode.parentNode.rowIndex;
+            celulaCategoria = x.cells[3];
+
+            if(celulaCategoria == "Computador"){
+                alert("Ligando Monitor...");
+            }
+        }function funcionar(r){
+            var x = r.parentNode.parentNode.rowIndex;
+            celulaCategoria = x.cells[3];
+
+            if(celulaCategoria == "Eletrodomestico"){
+                alert("Funcionando...");
+            }
+            
+        }
+    </script>
+    <body onload=''>
+        <form action="." method="post">
+        Nome do Produto : <input type="text" id="nome" name="NomeProduto>" required ></input><br/><br/>
+        Marca do Produto: <input type="text" id="marca" name="MarcaProduto" required></input>
+
+        <p>Qual a categoria do Produto ?</p>
+        <select id="Categoria" required>
+            <option value="">Selecione Uma Categoria</option>
+            <option value="Eletrodomestico">Eletrodomestico</option>
+            <option value="Celular">Celular</option>
+            <option value="Computador">Computador</option>
+        </select>
+        
+        <p>Condição :</p>
+        <input type="radio" id="Condição" name="Condição" value="Novo" required>Novo</input>
+        <input type="radio" id="Condição" name="Condição" value="Usado" >Usado</input>
+        
+        <p>Quantidade disponivel do produto</p>
+        <select id="quantidade" required>
+            <option value="">Selecione uma quantidade</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="5+">5+</option>   
+        </select>
+        <br>
+
+        <p>Diferenciais</p>
+
+        <input type="checkbox" class="D" value="5G" >5G</input>
+        <input type="checkbox" class="D" value="DUALCHIP" >DUAL CHIP</input>
+        <input type="checkbox" class="D" value="FULLHD" >FULL HD</input>
+        </br></br>
+        
+        <button type="button" onClick=cadastrarItem();table()>Cadastrar Produto</button>
+        <button type="reset" onclick=cancelarCadastro()>Cancelar Cadastro</button>
+        </form> 
+       
+
+        
+
+        <h5> Tabela de produtos</h5>
+        <style>
+            table, th, td {
+            border: 1px solid black;
+            }
+        </style>
+        
+        <table id="Tabela de Produtos" onload="table()">
+            <tr>
+            <th>Modelo</th> 
+            <th>Marca</th>
+            <th>Quantidade</th>
+            <th>Categoria</th>
+            <th>Condição</th>
+            <th>Ações</th>
+            </tr>
+        </table>
+
+    </body>
+</html>
