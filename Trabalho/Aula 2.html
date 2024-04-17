@@ -44,7 +44,7 @@
                     alert("Preencha a quantidade do produto");
                 }
                 if(auxiliarDiferencial == null){
-                    alert("Preencha pelo menos um dos diferenciais ")
+                    alert("Preencha pelo menos um dos diferenciais ");
                 }else{
                     checkedValue = auxiliarDiferencial.value;
                 }
@@ -90,20 +90,26 @@
 
             while(checagem){
                 nomeInput = prompt("Digita o nome atualizado: ",celulaNome.innerHTML);
-                if(nomeInput != null && nomeInput != "" ){
+                if(nomeInput != "" ){
                     checagem = false;
+                }else if(nomeInput == null){
+                    nomeInput = celulaNome.innerHTML;
                 }
             }checagem = true;
             while(checagem){
                 marcaInput = prompt("Digite a marca atualizada: ",celulaMarca.innerHTML);
-                if(marcaInput != null && marcaInput != "" ){
+                if(marcaInput != "" ){
                     checagem = false;
+                }else if(marcaInput == null){
+                    marcaInput = celulaMarca.innerHTML;
                 }
             }checagem = true;
             while(checagem){
                 qtdeInput = prompt("Digite a quantidade atualizada dentre as opções (1,2,3,4,5,5+)",celulaQtde.innerHTML);
                 if(qtdeInput == "1" || qtdeInput =="2" || qtdeInput == "3" || qtdeInput == "4" || qtdeInput == "5" || qtdeInput =="5+"){
                     checagem = false;
+                }else if(qtdeInput == null){
+                    qtdeInput = celulaQtde.innerHTML;
                 }
             }checagem = true;
 
@@ -111,12 +117,16 @@
                 categoriaInput = prompt("Digite a categoria atualizada dentre as opções (Celular,Computador e Eletrodomestico)",celulaCategoria.innerHTML);
                 if(categoriaInput == "Celular" || categoriaInput == "Monitor" || categoriaInput == "AirFryer"){
                     checagem = false;
+                }else if(nomeInput == null){
+                    categoriaInput = celulaCategoria.innerHTML;
                 }
             }checagem = true;
             while(checagem){
                 condicaoInput = prompt("Digita a condicao atualizada dentre as opções (Novo ou Usado) ",celulaCondicao.innerHTML);
                 if(condicaoInput == "Novo" || condicaoInput == "Usado"){
                     checagem = false;
+                }else if(condicaoInput == null){
+                    condicaoInput = celulaCondicao.innerHTML;
                 }
             }
             celulaNome.innerHTML = nomeInput;
@@ -198,7 +208,7 @@
 
         
 
-        <h5> Tabela de produtos</h5>
+        <h2> Tabela de produtos</h2>
         <style>
             table, th, td {
             border: 1px solid black;
