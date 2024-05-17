@@ -1,0 +1,10 @@
+input {
+    text-transform: uppercase;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: aqua;
+}
+
+

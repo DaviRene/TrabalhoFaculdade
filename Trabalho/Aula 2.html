@@ -1,6 +1,7 @@
 
 
 <html>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <H1>Cadastre Seu Produto</H1>
     <script>
         function cancelarCadastro(){
@@ -24,7 +25,7 @@
             auxiliarDiferencial = document.querySelector('.D:checked');
 
             if(nome == "" && marca == "" && categoria == "" && quantidade == "" && auxiliarCondicao == null && auxiliarDiferencial == null){
-                alert("Preencha todas as informações");
+                alert("Por favor preencha todas as informações");
             }else{
                 if(nome == ""){
                     alert("Preencha o nome do produto");
@@ -201,13 +202,10 @@
         
         </br></br>
         
-        <button type="button" onClick=cadastrarItem();table()>Cadastrar Produto</button>
-        <button type="reset" onclick=cancelarCadastro()>Cancelar Cadastro</button>
+        <button type="button" class="btn btn-outline-success" onClick=cadastrarItem();table()>Cadastrar Produto</button>
+        <button type="reset" class="btn btn-outline-danger" onclick=cancelarCadastro()>Cancelar Cadastro</button>
         </form> 
        
-
-        
-
         <h2> Tabela de produtos</h2>
         <style>
             table, th, td {
@@ -225,6 +223,10 @@
             <th>Ações</th>
             </tr>
         </table>
-
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>
+
+
